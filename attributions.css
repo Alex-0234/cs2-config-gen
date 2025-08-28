@@ -1,0 +1,156 @@
+/* ========================
+   1. Base / Resets
+   ======================== */
+
+:root {
+  --bg-color: #030303;
+  --text-color: #F8F0FB;
+  --secondary-color: #0d1321;
+  --primary-color: #6366f1;
+}
+
+body.light-theme {
+  --bg-color: #B7CECE;
+  --text-color: #3a3335;
+  --secondary-color: #F8F0FB;
+  --primary-color: #6366f1;
+}
+/* ========================
+   2. Layout (page-wide)
+   ======================== */
+
+html {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+body {
+  /* Box */
+  display: block;
+  height: 100vh;
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  /* Visuals */
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+header {
+  /* Position */
+  position: fixed;
+  /* Box */
+  width: 100vw;
+  height: 100px;
+  z-index: 100;
+  /* Visuals */
+  background-color: var(--bg-color);
+  border-bottom: solid 1px var(--primary-color);
+  /* Text */
+  text-align: center;
+  /* Animations */
+  transition: height 0.2s ease;
+}
+main {
+  /* Position*/
+  place-self: center;
+  /* Box */
+  padding-top: 100px;
+  width: 100%;
+  height: auto;
+  /* Visuals */
+  color: var(--primary-color);
+  background-color: var(--bg-color);
+}
+
+/* ========================
+   3. Components
+   ======================== */
+.navbar {
+  /* Position */
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  /* Box */
+  height: 4.2rem;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* Visuals */
+  background-color: rgba(0,0,0,0)
+}
+
+
+/* ========================
+   4. Typography
+   ======================== */
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+span {
+    text-decoration: underline;
+}
+
+#title {
+  font-size: 3rem;
+  margin: 0;
+  color: var(--primary-color);
+  transition: all 0.2s ease-in;
+}
+.center-left-title {
+    position:absolute;
+    left: 2rem;
+    bottom: 1rem;
+    font-size: 3rem;
+}
+
+/* Hide the checkbox */
+.toggle input {
+    display: none;
+}
+
+/* The background track */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    border-radius: 34px;
+    transition: 0.3s;
+}
+
+/* The circle (thumb) */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Checked (ON) state */
+.toggle input:checked + .slider {
+    background-color: var(--text-color); 
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(26px);
+}
