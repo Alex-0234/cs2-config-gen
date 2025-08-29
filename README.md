@@ -1,17 +1,22 @@
 # Config Generator
 
-Version: 1.0.0
+## Version
+* v1.1 - 29.08.2025
+Added more binds.
+* v1.0
+Initial commit
 
 Description:
-A web-based configuration generator for CS2 Keybinds. 
+A web-based config generator for CS2.
+User can bind actions to a desirable key.  
 
 ## Technologies Used
 
-HTML5 – Semantic page structure.
+- HTML5 – Semantic page structure.
 
-CSS3 – Variables, transitions, animations, responsive design.
+- CSS3 – Variables, transitions, animations, responsive design.
 
-JavaScript (ES6+) – DOM manipulation, event handling, localStorage, IntersectionObserver for animations.
+- JavaScript (ES6+) – DOM manipulation, event handling, localStorage, IntersectionObserver for animations.
 
 # Usage
 
@@ -25,6 +30,6 @@ Optional: Toggle the theme using the switch in the navbar.
 
 ## TODO / Planned Features 
 
-Support for all possible binds.
+[ ] Support for all possible binds.
 
-Adding more optional / visually pleasing binds.
+[ ] Adding more optional / visually pleasing binds.

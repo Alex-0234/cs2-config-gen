@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const body = document.querySelector('body');
     const headerContainer = document.getElementById('header');
-    const dupeInfo = document.getElementById('dupe-info');
     const titleText = document.getElementById('title');
     const scrollLogo = document.querySelector('.scroll-logo');
     const svgPic = document.querySelector('.pic');
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const jumpScroll = document.getElementById('scrolljump-select').value;
         const jump = document.getElementById('jumpbutton').value;
-        const buyMenu = document.getElementById('buymenu').value;
+        const buyMenu = document.getElementById('buyMenu').value;
         const forward = document.getElementById('forward').value;
         const backward = document.getElementById('backward').value;
         const left = document.getElementById('left').value;
@@ -113,6 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const lastWeapon = document.getElementById('lastWeapon').value;
         const drop = document.getElementById('drop').value;
         const use = document.getElementById('use').value;
+        const autoBuy = document.getElementById('autoBuy').value;
+        const rebuy = document.getElementById('rebuy').value;
+        const scoreboard = document.getElementById('scoreboard').value;
+        const console = document.getElementById('console').value;
                 
         buttonKeys.forEach(key => {
             if (key && key.id){
@@ -139,6 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
             let dropKey = null;
             let useKey = null;
             let buyMenuKey = null;
+            let autoBuyKey = null;
+            let rebuyKey = null;
+            let scoreboardKey = null;
+            let consoleKey = null;
 
 
             /// === Bindings === ///
@@ -169,6 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
             dropKey = `bind "${drop.toUpperCase()}" "drop";`;
             buyMenuKey = `bind "${buyMenu.toUpperCase()}" "buy";`;
             useKey = `bind "${use.toUpperCase()}" "+use";`;
+            autoBuyKey = `bind "${autoBuy.toUpperCase()}" "buy quickbuy";`;
+            rebuyKey = `bind "${rebuy.toUpperCase()}" "rebuy";`;
+            scoreboardKey = `bind "${scoreboard.toUpperCase()}" "+showscores";`;
+            consoleKey = `bind "${console.toUpperCase()}" "toggleconsole";`;
 
 
 
@@ -220,6 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
             if (buyMenu) {
                 outputMessage.push(buyMenuKey);
             }
+            if (autoBuy) {
+                outputMessage.push(autoBuyKey);
+            }
+            if (rebuy) {
+                outputMessage.push(rebuyKey);
+            }
+            if (scoreboard) {
+                outputMessage.push(scoreboardKey);
+            }
+            if (console) {
+                outputMessage.push(consoleKey);
+            }
 
             code.innerHTML = outputMessage.join('\n');
         };
@@ -235,6 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* Checking for Repetition */
 function bindRepetition(keyArray) {
+    const dupeInfo = document.getElementById('dupe-info');
     let values = keyArray.map(k => k.value.trim().toUpperCase()).filter(v => v !== "");
     let duplicates = values.filter((val, i, arr) => arr.indexOf(val) !== i);
 
