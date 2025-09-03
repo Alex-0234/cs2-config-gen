@@ -3,6 +3,37 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     const buttonKeys = Array.from(document.querySelectorAll('.key'));
+    
+    // Instantiate with defaults
+    const cross = new Crosshair();
+
+    // Grab input elements
+    const sizeInput = document.getElementById("size");
+    const thicknessInput = document.getElementById("thickness");
+    const gapInput = document.getElementById("gap");
+    const outlineInput = document.getElementById("outline");
+
+    const colorRed = document.getElementById('red');
+    const colorGreen = document.getElementById('green');
+    const colorBlue = document.getElementById('blue');
+
+    
+
+    // Add listeners to dynamically update crosshair
+    [sizeInput, thicknessInput, gapInput, outlineInput, colorRed, colorGreen, colorBlue].forEach(input => {
+    input.addEventListener("change", () => {
+        cross.update({
+        size: Number(sizeInput.value),
+        thickness: Number(thicknessInput.value),
+        gap: Number(gapInput.value),
+        outline: Number(outlineInput.value),
+        color: `rgb(${Number(colorRed.value)}, ${Number(colorGreen.value)}, ${Number(colorBlue.value)})`
+
+
+        });
+    });
+    });
+    
 
     buttonKeys.forEach(key => {
             if (key && key.id){
@@ -278,66 +309,83 @@ function bindRepetition(keyArray) {
           If you're sure, change the key to whatever (CHANGELATER etc.) and edit later.`
     }
 }
+class Crosshair {
+  constructor({
+    size = 5,
+    thickness = 2,
+    gap = 3,
+    color = "lime",
+    selector = ".preview"
+  } = {}) 
+
+    {
+    this.size = size;
+    this.thickness = thickness;
+    this.gap = gap;
+    this.color = color;
+    this.container = document.querySelector(selector);
+
+    this.render();
+  }
+
+  render() {
+    const s = this.size;
+    const t = this.thickness;
+    const g = this.gap;
+    const c = this.color;
+
+    this.container.innerHTML = `
+      <div style="position: relative; width: ${s*2 + g*2}px; height: ${s*2 + g*2}px;">
+        <!-- Horizontal lines -->
+        <div style="
+          background:${c};
+          height:${t}px;
+          width:${s}px;
+          position:absolute;
+          top:50%;
+          left:0;
+          transform:translateY(-50%) translateX(-${g}px);
+        "></div>
+        <div style="
+          background:${c};
+          height:${t}px;
+          width:${s}px;
+          position:absolute;
+          top:50%;
+          right:0;
+          transform:translateY(-50%) translateX(${g}px);
+        "></div>
+
+        <!-- Vertical lines -->
+        <div style="
+          background:${c};
+          width:${t}px;
+          height:${s}px;
+          position:absolute;
+          left:50%;
+          top:0;
+          transform:translateX(-50%) translateY(-${g}px);
+        "></div>
+        <div style="
+          background:${c};
+          width:${t}px;
+          height:${s}px;
+          position:absolute;
+          left:50%;
+          bottom:0;
+          transform:translateX(-50%) translateY(${g}px);
+        "></div>
+      </div>
+    `;
+  }
+
+  update(options = {}) {
+    Object.assign(this, options);
+    this.render();
+  }
+}
 
 
 
 
 
-
-            // let activeKey = null;
-            // buttonKeys.forEach(key=> {
-            //     key.addEventListener('click', ()=> {
-            //         activeKey = key;
-            //     })
-
-            //     const cs2KeyMap = {
-            //             // Letters
-            //             a: "a", b: "b", c: "c", d: "d", e: "e", f: "f", g: "g",
-            //             h: "h", i: "i", j: "j", k: "k", l: "l", m: "m",
-            //             n: "n", o: "o", p: "p", q: "q", r: "r", s: "s",
-            //             t: "t", u: "u", v: "v", w: "w", x: "x", y: "y", z: "z",
-
-            //             // Number row
-            //             "0": "0", "1": "1", "2": "2", "3": "3", "4": "4",
-            //             "5": "5", "6": "6", "7": "7", "8": "8", "9": "9",
-
-            //             // Function keys
-            //             f1: "F1", f2: "F2", f3: "F3", f4: "F4", f5: "F5",
-            //             f6: "F6", f7: "F7", f8: "F8", f9: "F9", f10: "F10",
-            //             f11: "F11", f12: "f12",
-
-            //             // Modifiers
-            //             shift: "SHIFT", ctrl: "ctrl", rctrl: "rctrl",
-            //             alt: "alt", ralt: "ralt", capslock: "capslock",
-            //             tab: "tab", enter: "enter", backspace: "backspace",
-            //             space: "SPACE",
-
-            //             // Navigation
-            //             uparrow: "uparrow", downarrow: "downarrow",
-            //             leftarrow: "leftarrow", rightarrow: "rightarrow",
-            //             ins: "ins", home: "home", pgup: "pgup",
-            //             del: "del", end: "end", pgdn: "pgdn",
-
-            //             // Symbols / punctuation
-            //             semicolon: "semicolon", "'": "'", comma: ",",
-            //             period: ".", slash: "/", backslash: "\\",
-            //             "[": "[", "]": "]",
-
-            //             // Numpad
-            //             kp_1: "kp_1", kp_2: "kp_2", kp_3: "kp_3",
-            //             kp_4: "kp_4", kp_5: "kp_5", kp_6: "kp_6",
-            //             kp_7: "kp_7", kp_8: "kp_8", kp_9: "kp_9",
-            //             kp_0: "kp_0", kp_enter: "kp_enter", kp_plus: "kp_plus",
-            //             kp_minus: "kp_minus", kp_multiply: "kp_multiply",
-            //             kp_divide: "kp_slash", kp_del: "kp_del",
-            //             };
-
-            //     key.addEventListener('keypress', (e)=> {
-            //         if (!activeKey) return;
-
-            //         let key = e.key.toLowerCase();
-            //         let bindName = cs2KeyMap[key] || key.toUpperCase(); // fallback to uppercase
-
-            //         activeKey.value = bindName;
-            //         activeKey = null;
-            // });

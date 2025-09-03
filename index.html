@@ -73,18 +73,22 @@
                     </ul>
 
             </section>
-
+            <h1 class="form-h1">Config File Generator</h1>
             <section id="form-container" class="form-container hidden">
-                <h1 class="form-h1">Config File Generator</h1>
-                <p id="dupe-info"></p>
-                <form id="config-form">
-                        <label class="form-input" for="setting1">JUMP SCROLL:</label>
+                <form id="1" class="config-form">
+                    <p id="special-binds">Special Binds</p>
+                    <label class="form-input" for="setting1">JUMP SCROLL:</label>
                         <select class="form-input key" id="scrolljump-select">
                             <option>None</option>
                             <option>ScrollUp</option>
                             <option>ScrollDown</option>
                             <option>Both</option>
                         </select> 
+
+                </form>
+                <p id="dupe-info"></p>
+                <form id="2" class="config-form">            <!--------------------- Completely change layout to horizontal to force a scroll on everything and have it be in view -->
+
                     <p class="p-size" id="default-movement-binds">Default Movement Binds</p>
 
                         <label class="form-input p-size" for="jumpbutton" >Default Jump Button:</label>
@@ -108,8 +112,10 @@
                         <label class="form-input" for="walk">Walk:</label>
                         <input class="form-input key" type="text" value="SHIFT" id="walk" name="walk">
                         
+                </form>
+                <form id="3" class="config-form">
                     <p id="default-action-binds">Default Action Binds</p>
-
+                
                         <label class="form-input" for="primary">Primary Fire:</label>
                         <input class="form-input key" type="text" value="MOUSE1" id="primary" name="primary">
 
@@ -142,9 +148,43 @@
 
                         <label class="form-input" for="console">Console:</label>
                         <input class="form-input key" type="text" value="`" id="console" name="console">
-
-                    <button id="generate" type="button">Generate Config</button>
                 </form>
+                <form id="4" class="config-form">
+
+                </form>
+                <form id="5" class="config-form">
+
+                </form>
+            </section>
+                <button id="generate" type="button">Generate Config</button>
+            <section class="crosshair hidden">
+                    <section class="preview">
+
+                    </section>
+                    <section class="settings">
+                        <div class="wrapper">
+                        <label>Size: </label>
+                        <input id="size" type="range" class="range" min="o" max="10" step="1" value="3"></input><br>
+                        </div>
+                        <div  class="wrapper">
+                        <label>Thickness: </label>
+                        <input id="thickness" type="range" class="range" min="o" max="10" step="1" value="3"></input><br>
+                        </div>
+                        <div class="wrapper">
+                        <label>Gap: </label>
+                        <input id="gap" type="range" class="range" min="o" max="10" step="1" value="3"></input><br>
+                        </div>
+                        <div class="wrapper">
+                        <label>Outline: </label>
+                        <input id="outline" type="range" class="range" min="o" max="10" step="1" value="3"></input><br>
+                        </div>
+                        <div class="rgb">
+                            <h2>RGB :</h2>
+                            <input id="red" type="range" max="254" min="0" value="30" step="1"></input>
+                            <input id="green" type="range" max="254" min="0" value="30" step="1"></input>
+                            <input id="blue" type="range" max="254" min="0" value="30" step="1"></input>
+                        </div>
+                    </section>
             </section>
             <section id="output-container" class="output-container center hidden">
                 <h1>Your Generated Config File:</h1>

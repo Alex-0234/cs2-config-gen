@@ -32,6 +32,8 @@ body {
   margin: 0;
   padding: 0;
 
+  text-align: center;
+
   /* Visuals */
   color: var(--text-color);
   background-color: var(--bg-color);
@@ -138,34 +140,35 @@ footer {
   /* Position */
   place-self: center;
   /* Box */
-  height: auto;
-  width: 50vw;
-  padding: 1rem;
-  display: grid;
-  place-items: center;
-  place-self: center;
-  grid-template-columns: 1fr;
-  grid-template-rows: 8rem 8rem 1fr;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 2rem;
+  padding: 2rem;
   border-radius: 1rem;
-  margin: 4rem 8rem 20rem 8rem;
-  padding: 5rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
 
   border: solid 1px var(--primary-color);
 }
 .form-h1 {
-  grid-row: 1;
-  grid-column: 1;
+  display: inline-block;
+
+
 }
-#config-form {
+.config-form {
   /* Box */
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   text-align: center;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 5rem repeat(6rem);
+  grid-template-rows: 2rem repeat(11, 2.5rem);
   gap: 1rem;
-  width: 70%;
-  height: auto;
 }
 
 #generate {
@@ -177,6 +180,49 @@ footer {
   margin-top: 1rem;
   border-radius: 0.5rem;
   padding: 0;
+}
+
+.crosshair {
+  /* Position */
+  place-self: center;
+  /* Box */
+  height: 60vh;
+  width: 80%;
+  border-radius: 1rem;
+  margin: 4rem 8rem 20rem 8rem;
+  padding: 1rem;
+  display: flex;
+  
+  /* Visuals */
+  border: solid 1px var(--primary-color);
+}
+.preview {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  background-color: #3a3335;
+}
+.settings {
+  height: 100%;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 3rem);
+
+  background-color: #3a3335;
+}
+.rgb {
+  height: 80%;
+  width: 80%;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #config-output {
@@ -277,6 +323,9 @@ rect[data-key] {
 .ignore text,
 .ignore tspan {
   pointer-events: none;
+}
+#special-binds {
+  grid-column: 1 / span 2;
 }
 
 /* ========================

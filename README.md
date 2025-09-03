@@ -1,35 +1,34 @@
 # Config Generator
 
-## Version
-* v1.1 - 29.08.2025
-Added more binds.
-* v1.0
-Initial commit
-
-Description:
+## Description:
 A web-based config generator for CS2.
 User can bind actions to a desirable key.  
 
-## Technologies Used
 
-- HTML5 – Semantic page structure.
+## Version
+**v1.2 - 3.9.2025**
+Added basic crosshair showcase (unfinished) with a class.
+Made binds form horizontal for better visibility.
 
-- CSS3 – Variables, transitions, animations, responsive design.
+**v1.1 - 29.08.2025**
+Added more binds.
 
-- JavaScript (ES6+) – DOM manipulation, event handling, localStorage, IntersectionObserver for animations.
+**v1.0**
+Initial commit
 
-# Usage
+## Built With
+- HTML
+- CSS
+- JavaScript 
 
-Open index.html in a modern browser.
+## Planned Features 
+- ✅ Adding a crosshair showcase 
+- ❌ Support for all possible binds.
+- ❌ Adding more optional / visually pleasing binds.
+- ❌ Adding working crosshair binds etc.
+- ❌ Adding crosshair binds to the config.
 
-Fill out the form with desired keybindings.
-
-Click Generate to display the configuration in the output area.
-
-Optional: Toggle the theme using the switch in the navbar.
-
-## TODO / Planned Features 
-
-[ ] Support for all possible binds.
-
-[ ] Adding more optional / visually pleasing binds.
+## Installation
+Clone the repo:
+```bash
+git clone https://github.com/Alex-0234/cs2-config-gen.git
